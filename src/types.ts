@@ -1,5 +1,6 @@
+import { ConversationFlavor } from "@grammyjs/conversations";
 import { SupabaseClient } from "@supabase/supabase-js";
-import { CommandContext, Context } from "grammy";
+import { CommandContext, Context, SessionFlavor } from "grammy";
 
 export interface Database {
   public: {
@@ -40,5 +41,13 @@ export interface Database {
 export type Command = {
   [key: string]: (
     supabase: SupabaseClient<Database>
-  ) => (ctx: CommandContext<Context>) => void;
+  ) => (ctx: CommandContext<DistuptiveDenContext>) => void;
 };
+
+export type SessionData = {
+  // field?: string;
+};
+
+export type DistuptiveDenContext = Context &
+  SessionFlavor<SessionData> &
+  ConversationFlavor;

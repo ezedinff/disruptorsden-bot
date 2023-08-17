@@ -1,9 +1,20 @@
-import { Command } from "./types"
+import { Command, DistuptiveDenContext } from "./types"
+import { CommandContext } from "grammy";
+import { REGISTRATION } from "./conversations";
 
-const commands: Command = {
-    start: (supabase) => (ctx) => {
-        ctx.reply("Hello, I'm a bot!");
-    }
+const start = () => async (ctx: CommandContext<DistuptiveDenContext>) => {
+    ctx.reply("Hello, I'm a bot!");
 }
 
-export default commands
+const register = () => async (ctx: CommandContext<DistuptiveDenContext>) => {
+    await ctx.conversation.enter(REGISTRATION);
+}
+
+
+
+const commands: Command = {
+    start,
+    register
+}
+
+export default commands;
