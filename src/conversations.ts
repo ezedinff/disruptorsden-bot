@@ -13,12 +13,14 @@ export const registration = (supabase: SupabaseClient<Database>) => {
         const newQuestions = [...questions];
         let member = {tg_id: ctx.from?.id};
         for(const question of newQuestions) {
-            await ctx.reply(question.question);
-            let answer = (await conversation.waitFor(":text")).msg.text;
-            if (!question.validation(answer)) {
-                await ctx.reply(question.errorMessage);
+            let answer;
+            do {
+                await ctx.reply(question.question);
                 answer = (await conversation.waitFor(":text")).msg.text;
-            }
+                if (!question.validation(answer)) {
+                    await ctx.reply(question.errorMessage);
+                }
+            } while (!question.validation(answer));
             question.answer = answer;
             member = { ...member, [question.key]: answer };
         }
