@@ -28,7 +28,7 @@ export const createSupabaseClient = (
  */
 export const getMembersByTgId = async (
   supabase: SupabaseClient<Database>,
-  tgId: string
+  tgId: number
 ) => {
   const { data, error } = await supabase
     .from("members")
@@ -79,3 +79,46 @@ export const updateMember = async (
   }
   return data;
 };
+
+
+
+export const insertMeetup = async (
+  supabase: SupabaseClient<Database>,
+  meetup: any
+) => {
+  const { data, error } = await supabase.from("meetups").insert(meetup);
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+
+export const updateMeetup = async (
+  supabase: SupabaseClient<Database>,
+  meetup: any
+) => {
+  const { data, error } = await supabase
+    .from("meetups")
+    .update(meetup)
+    .eq("id", meetup.id);
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+
+
+export const getMeetupByDate = async (
+  supabase: SupabaseClient<Database>,
+  date: string // YYYY-MM-DD
+) => {
+  const { data, error } = await supabase
+    .from("meetups")
+    .select("*")
+    .eq("date", date)
+    .single();
+  if (error) {
+    throw error;
+  }
+  return data;
+}

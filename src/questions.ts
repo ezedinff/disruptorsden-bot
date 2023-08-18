@@ -1,4 +1,4 @@
-const questions = [
+const memberForm = [
   {
     question: "What is your name?",
     answer: "",
@@ -13,7 +13,7 @@ const questions = [
     answer: "",
     key: "email",
     validation: (answer: string) => {
-      return answer.length > 0 && answer.match(/.+@.+\..+/i);
+      return answer.length > 0 && new RegExp(/.+@.+\..+/i).test(answer);
     },
     errorMessage: "Please enter a valid email.",
   },
@@ -22,7 +22,7 @@ const questions = [
     answer: "",
     key: "phone",
     validation: (answer: string) => {
-      return answer.length > 0 && answer.match(/\d{10}/);
+      return answer.length > 0 && new RegExp(/\d{10}/).test(answer);
     },
     errorMessage: "Please enter a valid phone number.",
   },
@@ -37,4 +37,48 @@ const questions = [
   },
 ];
 
-export default questions;
+export const meetupForm = [
+  {
+    question: "What is the date of the meetup? in the format YYYY-MM-DD",
+    answer: "",
+    key: "date",
+    validation: (answer: string) => {
+      return answer.length > 0 && new RegExp(/\d{4}-\d{2}-\d{2}/).test(answer);
+    },
+    errorMessage: "Please enter a valid date.",
+  },
+  {
+    question: "What is the location of the meetup?",
+    answer: "",
+    key: "location",
+    validation: (answer: string) => {
+      return answer.length > 0;
+    },
+    errorMessage: "Please enter a valid location.",
+  },
+  {
+    question: "What is the start time of the meetup? in the format HH:MM",
+    answer: "",
+    key: "start_time",
+    validation: (answer: string) => {
+      return answer.length > 0 && new RegExp(/\d{2}:\d{2}/).test(answer);
+    },
+    errorMessage: "Please enter a valid start time.",
+  },
+  {
+    question: "What are the topics of the meetup? (separated by commas)",
+    answer: "",
+    key: "topics",
+    validation: (answer: string) => {
+      // optional
+      return true;
+    },
+    errorMessage: "Please enter a valid topics.",
+  },
+];
+
+
+export default {
+  memberForm,
+  meetupForm,
+};
