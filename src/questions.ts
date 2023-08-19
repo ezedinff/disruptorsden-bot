@@ -77,8 +77,34 @@ export const meetupForm = [
   },
 ];
 
+export const getAttendanceForm = [
+  {
+    question: "What is the date of the meetup? in the format YYYY-MM-DD",
+    answer: "",
+    key: "date",
+    validation: (answer: string) => {
+      return answer.length > 0 && new RegExp(/\d{4}-\d{2}-\d{2}/).test(answer);
+    },
+    errorMessage: "Please enter a valid date.",
+  }
+];
+
+export const registerAdminForm = [
+  {
+    question: "Cool! Who are you going to assign as an admin? Please enter the member id.",
+    answer: "",
+    key: "member_id",
+    validation: (answer: string) => {
+      return answer.length > 0 && new RegExp(/\d+/).test(answer);
+    },
+    errorMessage: "Please enter a valid member id.",
+  }
+];
+
 
 export default {
   memberForm,
   meetupForm,
+  getAttendanceForm,
+  registerAdminForm
 };
