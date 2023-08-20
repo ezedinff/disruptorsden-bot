@@ -4,7 +4,7 @@
     "name": "Ezedin Fedlu"
   },
   "scripts": {
-    "start": "npx tsc && tsx ./src/index.ts",
+    "start": "NODE_PATH=build/src node ./build/src/index.js",
     "build": "npx tsc --noEmit false",
     "dev": "tsc-watch --onSuccess \"tsx ./src/index.ts\""
   },
