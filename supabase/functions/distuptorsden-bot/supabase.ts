@@ -1,5 +1,5 @@
-import { SupabaseClient, createClient } from "@supabase/supabase-js";
-import { Database } from "./types";
+import { SupabaseClient, createClient } from "https://esm.sh/@supabase/supabase-js@2.32.0";
+import { Database } from "./types.ts";
 
 /**
  * Creates a Supabase client using the provided Supabase URL and key.
@@ -227,5 +227,5 @@ export const getAttendanceByMeetupId = async (
     }
     throw error;
   }
-  return data?.map((row) => row.members).flat();
+  return data?.map((row: any) => row.members).flat();
 };

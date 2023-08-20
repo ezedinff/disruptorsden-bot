@@ -1,16 +1,16 @@
-import { Conversation, createConversation } from "@grammyjs/conversations";
-import questions from "./questions";
-import { SupabaseClient } from "@supabase/supabase-js";
-import { Database, DistuptiveDenContext, Question } from "./types";
+import { Conversation, createConversation } from "https://deno.land/x/grammy_conversations@v1.1.2/mod.ts";
+import questions from "./questions.ts";
+import { SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.32.0";
+import { Database, DistuptiveDenContext, Question } from "./types.ts";
 import {
   getAttendanceByMeetupId,
   getMeetupByDate,
   getMemberById,
   insertMeetup,
   insertMember,
-} from "./supabase";
-import buttons from "./buttons";
-import { Keyboard } from "grammy";
+} from "./supabase.ts";
+import buttons from "./buttons.ts";
+import { Keyboard } from "https://deno.land/x/grammy@v1.18.1/mod.ts";
 
 export const REGISTRATION = "Registration";
 export const CREATE_MEETUP = "Create Meetup";
@@ -81,7 +81,7 @@ export const getAttendance = (supabase: SupabaseClient<Database>) => {
       ctx: DistuptiveDenContext
     ) => {
       const newQuestions = [...questions.getAttendanceForm];
-      const response = await form(newQuestions, conversation, ctx);
+      const response: any = await form(newQuestions, conversation, ctx);
       if ("date" in response) {
         const meetup = await getMeetupByDate(supabase, response.date as string);
         if (meetup) {
@@ -117,7 +117,7 @@ export const registration_admin = (supabase: SupabaseClient<Database>) => {
       ctx: DistuptiveDenContext
     ) => {
       const newQuestions = [...questions.registerAdminForm];
-      const response = await form(newQuestions, conversation, ctx);
+      const response: any = await form(newQuestions, conversation, ctx);
       if ("member_id" in response) {
         await supabase
           .from("members")

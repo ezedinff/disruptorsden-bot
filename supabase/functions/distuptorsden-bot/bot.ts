@@ -1,10 +1,10 @@
-import { Bot, session } from "grammy";
-import { Command, DistuptiveDenContext } from "./types";
-import { SupabaseClient } from "@supabase/supabase-js";
-import { conversations } from "@grammyjs/conversations";
-import { createMeetup, getAttendance, registration, registration_admin } from "./conversations";
-import buttons from "./buttons";
-import { attendance, create_meetup, get_attendance, register, registerAttendance, register_admin } from "./commands";
+import { Bot, session } from "https://deno.land/x/grammy@v1.18.1/mod.ts";
+import { Command, DistuptiveDenContext } from "./types.ts";
+import { SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.32.0";
+import { conversations } from "https://deno.land/x/grammy_conversations@v1.1.2/mod.ts";
+import { createMeetup, getAttendance, registration, registration_admin } from "./conversations.ts";
+import buttons from "./buttons.ts";
+import { attendance, create_meetup, get_attendance, register, registerAttendance, register_admin } from "./commands.ts";
 
 const createBot = (
   token: string,

@@ -1,6 +1,6 @@
-import { ConversationFlavor } from "@grammyjs/conversations";
-import { SupabaseClient } from "@supabase/supabase-js";
-import { CommandContext, Context, SessionFlavor } from "grammy";
+import { ConversationFlavor } from "https://deno.land/x/grammy_conversations@v1.1.2/mod.ts";
+import { SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.32.0";
+import { CommandContext, Context, SessionFlavor } from "https://deno.land/x/grammy@v1.18.1/mod.ts";
 
 export interface Database {
   public: {

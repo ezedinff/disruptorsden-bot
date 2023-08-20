@@ -1,9 +1,9 @@
-import { Command, Database, DistuptiveDenContext } from "./types"
-import { CommandContext, InlineKeyboard } from "grammy";
-import { REGISTRATION, CREATE_MEETUP, GET_ATTENDANCE, REGISTRATION_ADMIN } from "./conversations";
-import { getAllMembers, getMeetupByDate, getMembersByTgId, insertAttendance, insertMeetup } from "./supabase";
-import { SupabaseClient } from "@supabase/supabase-js";
-import buttons from "./buttons";
+import { Command, Database, DistuptiveDenContext } from "./types.ts"
+import { CommandContext, InlineKeyboard } from "https://deno.land/x/grammy@v1.18.1/mod.ts";
+import { REGISTRATION, CREATE_MEETUP, GET_ATTENDANCE, REGISTRATION_ADMIN } from "./conversations.ts";
+import { getAllMembers, getMeetupByDate, getMembersByTgId, insertAttendance, insertMeetup } from "./supabase.ts";
+import { SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.32.0";
+import buttons from "./buttons.ts";
 
 const isUserExists = async (
     supabase: SupabaseClient<Database>,
