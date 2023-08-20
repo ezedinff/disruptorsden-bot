@@ -1,7 +1,11 @@
 {
+  "name": "@ezedinff/disruptorsden-bot",
+  "author": {
+    "name": "Ezedin Fedlu"
+  },
   "scripts": {
-    "start": "tsc && tsx ./src/index.ts",
-    "build": "tsc --noEmit false",
+    "start": "npx tsc && tsx ./src/index.ts",
+    "build": "npx tsc --noEmit false",
     "dev": "tsc-watch --onSuccess \"tsx ./src/index.ts\""
   },
   "devDependencies": {
