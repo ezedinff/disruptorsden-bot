@@ -178,15 +178,14 @@ export const getMeetupByDate = async (
   const { data, error } = await supabase
     .from("meetups")
     .select("*")
-    .eq("date", date)
-    .single();
+    .eq("date", date);
   if (error) {
     if (error.details.includes("Results contain 0 rows")) {
       return null;
     }
     throw error;
   }
-  return data;
+  return data[0];
 };
 
 /**

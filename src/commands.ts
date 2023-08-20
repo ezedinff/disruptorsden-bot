@@ -113,7 +113,7 @@ export const attendance = (supabase: SupabaseClient<Database>) => async (ctx: Co
     }
 
     const { attendance } = buttons;
-    const keyboard = new InlineKeyboard().text(attendance.text, attendance.callback_data.replace("{id}", meetup.id.toString()));
+    const keyboard = new InlineKeyboard().text(attendance.text, attendance.callback_data.replace("{id}", meetup?.id.toString()));
     
     for (const member of members) {
         await ctx.api.sendMessage(member.tg_id, "Please, confirm your attendance.", {
