@@ -46,14 +46,14 @@ export const isUserAdmin = async (
 
 
 const start = (supabase: SupabaseClient<Database>) => async (ctx: CommandContext<DistuptiveDenContext>) => {
-    // const userExists = await isUserExists(supabase, ctx, { 
-    //     no_tg_id: "Sorry, Something went wrong. Please, try again later.",
-    //     already_registered: "Hello, {name}! what's up?"
-    // });
+    const userExists = await isUserExists(supabase, ctx, { 
+        no_tg_id: "Sorry, Something went wrong. Please, try again later.",
+        already_registered: "Hello, {name}! what's up?"
+    });
 
-    // if (userExists) {
-    //     return;
-    // }
+    if (userExists) {
+        return;
+    }
 
     const { register } = buttons;
 
